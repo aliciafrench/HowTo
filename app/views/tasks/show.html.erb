@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+
+<h2>Steps</h2>
+<% @task.steps.each do %>
+  <p>
+    <strong>*</strong><%= step.instruction %>
+  </p>
+<% end %>
+ 
+<h2>Add a step:</h2>
+<%= form_for([@task, @task.steps.build]) do |f| %>
+  <p>
+    <%= f.label :instruction %><br />
+    <%= f.text_area :instruction %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
